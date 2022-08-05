@@ -9,7 +9,7 @@ deprecation==2.1.0
 dkpro-cassis==0.7.2
 filelock==3.7.1
 Flask==2.2.1
-fr-ner4archives-default-vectors-lg @ https://huggingface.co/ner4archives/fr_ner4archives_default_vectors_lg/resolve/main/fr_ner4archives_default_vectors_lg-any-py3-none-any.whl
+fr_ner4archives_default_test @ https://huggingface.co/ner4archives/fr_ner4archives_default_test/resolve/main/fr_ner4archives_default_test-any-py3-none-any.whl
 gunicorn==20.1.0
 idna==3.3
 importlib-metadata==4.12.0

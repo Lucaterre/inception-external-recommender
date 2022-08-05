@@ -6,7 +6,7 @@ setup_logging()
 
 server = Server()
 
-server.add_classifier("spacy_ner", SpacyNerClassifier("fr_ner4archives_default_vectors_lg"))
+server.add_classifier("spacy_ner", SpacyNerClassifier("fr_ner4archives_default_test"))
 
 app = server._app
 
