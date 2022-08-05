@@ -10,5 +10,7 @@ server.add_classifier("spacy_ner", SpacyNerClassifier("fr_ner4archives_default_v
 
 app = server._app
 
+# test
+
 #if __name__ == "__main__":
 #    server.start(debug=True, port=40022)
