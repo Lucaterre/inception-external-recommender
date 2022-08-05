@@ -14,7 +14,6 @@ gunicorn==20.1.0
 idna==3.3
 importlib-metadata==4.12.0
 importlib-resources==5.4.0
--e git+ssh://git@github.com/Lucaterre/inception-external-recommender.git@3cbcd69a0cc252f4c128c6353df9536eb5eb8bac#egg=inception_external_recommender
 itsdangerous==2.1.2
 Jinja2==3.1.2
 joblib==1.1.0
