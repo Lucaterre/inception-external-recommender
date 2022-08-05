@@ -13,7 +13,7 @@ from ariadne.contrib.inception_util import create_prediction, TOKEN_TYPE
 class SpacyNerClassifier(Classifier):
     def __init__(self, model_name: str, model_directory: Path = None):
         super().__init__(model_directory=model_directory)
-        self._model = spacy.load(model_name, disable=["parser"])
+        self._model = spacy.load(model_name, disable=['tagger', 'parser', 'tok2vec'])
 
     def predict(self, cas: Cas, layer: str, feature: str, project_id: str, document_id: str, user_id: str):
         # Extract the tokens from the CAS and create a spacy doc from it
@@ -23,6 +23,7 @@ class SpacyNerClassifier(Classifier):
         doc = Doc(self._model.vocab, words=words)
 
         # Find the named entities
+        print(f"Size TEXT: {len(doc.text)}")
         self._model.get_pipe("ner")(doc)
 
         # For every entity returned by spacy, create an annotation in the CAS
