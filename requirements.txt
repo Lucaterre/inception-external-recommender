@@ -9,7 +9,6 @@ deprecation==2.1.0
 dkpro-cassis==0.7.2
 filelock==3.7.1
 Flask==2.2.1
-fr_ner4archives_default_test @ https://huggingface.co/ner4archives/fr_ner4archives_default_test/resolve/main/fr_ner4archives_default_test-any-py3-none-any.whl
 gunicorn==20.1.0
 idna==3.3
 importlib-metadata==4.12.0
@@ -28,14 +27,16 @@ pathy==0.6.2
 preshed==3.0.6
 pydantic==1.8.2
 pyparsing==3.0.9
+python-crfsuite==0.9.8
 requests==2.28.1
+scikit-learn==1.1.2
+scipy==1.9.0
+six==1.16.0
+sklearn-crfsuite==0.3.6
 smart-open==5.2.1
 sortedcontainers==2.4.0
-spacy==3.3.1
-spacy-legacy==3.0.9
-spacy-loggers==1.0.3
-srsly==2.4.4
-thinc==8.0.17
+tabulate==0.8.10
+threadpoolctl==3.1.0
 toposort==1.7
 tqdm==4.64.0
 typer==0.4.2

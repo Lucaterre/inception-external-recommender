@@ -4,10 +4,10 @@ from cassis import Cas
 
 import spacy
 from spacy.tokens import Doc
-
+import concurrent.futures
 
 from ariadne.classifier import Classifier
-from ariadne.contrib.inception_util import create_prediction, TOKEN_TYPE
+from ariadne.contrib.inception_util import create_prediction, TOKEN_TYPE, SENTENCE_TYPE
 
 
 class SpacyNerClassifier(Classifier):
@@ -19,20 +19,24 @@ class SpacyNerClassifier(Classifier):
         # Extract the tokens from the CAS and create a spacy doc from it
         cas_tokens = cas.select(TOKEN_TYPE)
         words = [cas.get_covered_text(cas_token) for cas_token in cas_tokens]
-
+        self._model.max_length = 50000000
         doc = Doc(self._model.vocab, words=words)
 
         # Find the named entities
-        print(f"Size TEXT: {len(doc.text)}")
         self._model.get_pipe("ner")(doc)
 
         # For every entity returned by spacy, create an annotation in the CAS
-        for named_entity in doc.ents:
-            begin = cas_tokens[named_entity.start].begin
-            end = cas_tokens[named_entity.end - 1].end
+        def new_cas(named_entity):
             label = named_entity.label_
+            begin = cas_tokens[named_entity.start].begin
+            end = cas_tokens[named_entity.end].end
             prediction = create_prediction(cas, layer, feature, begin, end, label)
             cas.add_annotation(prediction)
+
+        #with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        for named_entity in doc.ents:
+            print(named_entity.text, named_entity.label_)
+            new_cas(named_entity)
 
 
 class SpacyPosClassifier(Classifier):
